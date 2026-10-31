@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #2c1d11 0%, #1a1008 100%);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.catalog-container {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border-radius: 5px;
+}
+
+/* Стили страниц каталога */
+#flipbook .page {
+    background-color: white;
+    width: 450px;
+    height: 600px;
+    overflow: hidden;
+}
+
+#flipbook .page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Кнопки перелистывания */
+.controls {
+    margin-top: 20px;
+}
+
+.controls button {
+    background-color: #8c6d53;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background-color: #a68568;
+}
