@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивный каталог Мама Знает</title>
     
+    <!-- Настройки для красивого превью в WhatsApp и соцсетях -->
+    <title>Каталог бытовой химии, духов в Петропавловске</title>
+    <meta name="description" content="Каталог бытовой химии и парфюмерии Мама Знает в Петропавловске.">
+
+    <!-- Open Graph метатеги -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Каталог бытовой химии, духов в Петропавловске">
+    <meta property="og:description" content="Официальный каталог бытовой химии, парфюмерии и товаров для дома Мама Знает.">
+    <meta property="og:image" content="https://suleimanbender-byte.github.io/katalog_1/page1.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+
     <!-- Подключаем jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Подключаем рабочую версию Turn.js через CDN -->
+    <!-- Подключаем библиотеку Turn.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
 
     <style>
@@ -90,26 +102,26 @@
     <div class="catalog-container">
         <div id="flipbook">
             <!-- 20 Страниц каталога -->
-            <div class="page"><img src="images/page1.jpg" alt="Страница 1"></div>
-            <div class="page"><img src="images/page2.jpg" alt="Страница 2"></div>
-            <div class="page"><img src="images/page3.jpg" alt="Страница 3"></div>
-            <div class="page"><img src="images/page4.jpg" alt="Страница 4"></div>
-            <div class="page"><img src="images/page5.jpg" alt="Страница 5"></div>
-            <div class="page"><img src="images/page6.jpg" alt="Страница 6"></div>
-            <div class="page"><img src="images/page7.jpg" alt="Страница 7"></div>
-            <div class="page"><img src="images/page8.jpg" alt="Страница 8"></div>
-            <div class="page"><img src="images/page9.jpg" alt="Страница 9"></div>
-            <div class="page"><img src="images/page10.jpg" alt="Страница 10"></div>
-            <div class="page"><img src="images/page11.jpg" alt="Страница 11"></div>
-            <div class="page"><img src="images/page12.jpg" alt="Страница 12"></div>
-            <div class="page"><img src="images/page13.jpg" alt="Страница 13"></div>
-            <div class="page"><img src="images/page14.jpg" alt="Страница 14"></div>
-            <div class="page"><img src="images/page15.jpg" alt="Страница 15"></div>
-            <div class="page"><img src="images/page16.jpg" alt="Страница 16"></div>
-            <div class="page"><img src="images/page17.jpg" alt="Страница 17"></div>
-            <div class="page"><img src="images/page18.jpg" alt="Страница 18"></div>
-            <div class="page"><img src="images/page19.jpg" alt="Страница 19"></div>
-            <div class="page"><img src="images/page20.jpg" alt="Страница 20"></div>
+            <div class="page"><img src="page1.jpg" alt="Страница 1"></div>
+            <div class="page"><img src="page2.jpg" alt="Страница 2"></div>
+            <div class="page"><img src="page3.jpg" alt="Страница 3"></div>
+            <div class="page"><img src="page4.jpg" alt="Страница 4"></div>
+            <div class="page"><img src="page5.jpg" alt="Страница 5"></div>
+            <div class="page"><img src="page6.jpg" alt="Страница 6"></div>
+            <div class="page"><img src="page7.jpg" alt="Страница 7"></div>
+            <div class="page"><img src="page8.jpg" alt="Страница 8"></div>
+            <div class="page"><img src="page9.jpg" alt="Страница 9"></div>
+            <div class="page"><img src="page10.jpg" alt="Страница 10"></div>
+            <div class="page"><img src="page11.jpg" alt="Страница 11"></div>
+            <div class="page"><img src="page12.jpg" alt="Страница 12"></div>
+            <div class="page"><img src="page13.jpg" alt="Страница 13"></div>
+            <div class="page"><img src="page14.jpg" alt="Страница 14"></div>
+            <div class="page"><img src="page15.jpg" alt="Страница 15"></div>
+            <div class="page"><img src="page16.jpg" alt="Страница 16"></div>
+            <div class="page"><img src="page17.jpg" alt="Страница 17"></div>
+            <div class="page"><img src="page18.jpg" alt="Страница 18"></div>
+            <div class="page"><img src="page19.jpg" alt="Страница 19"></div>
+            <div class="page"><img src="page20.jpg" alt="Страница 20"></div>
         </div>
     </div>
 
@@ -121,7 +133,6 @@
 
     <script>
         $(document).ready(function() {
-            // Инициализация флипбука после полной загрузки DOM
             $('#flipbook').turn({
                 width: 900,
                 height: 600,
@@ -131,7 +142,6 @@
                 acceleration: true
             });
 
-            // Навигация кнопками
             $('#prev').click(function() {
                 $('#flipbook').turn('previous');
             });
@@ -140,7 +150,6 @@
                 $('#flipbook').turn('next');
             });
 
-            // Навигация стрелками на клавиатуре
             $(document).keydown(function(e) {
                 if (e.keyCode == 37) {
                     $('#flipbook').turn('previous');
