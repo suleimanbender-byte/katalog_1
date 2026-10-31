@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- Настройки для красивого превью в WhatsApp и соцсетях -->
     <title>Каталог бытовой химии, духов в Петропавловске</title>
@@ -25,10 +25,16 @@
     <style>
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+        }
+        body {
             background: linear-gradient(135deg, #2c1d11 0%, #1a1008 100%);
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -36,25 +42,24 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            overflow: hidden;
         }
 
         .catalog-container {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border-radius: 8px;
-            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
         }
 
         /* Область флипбука */
         #flipbook {
-            width: 900px;
-            height: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-radius: 6px;
         }
 
         /* Стили отдельных страниц */
         #flipbook .page {
-            width: 450px;
-            height: 600px;
             background-color: #ffffff;
             background-size: cover;
             background-position: center;
@@ -63,7 +68,7 @@
         #flipbook .page img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
         }
 
@@ -71,6 +76,7 @@
         .controls {
             display: flex;
             gap: 15px;
+            margin-top: 15px;
             z-index: 100;
         }
 
@@ -78,8 +84,8 @@
             background: linear-gradient(135deg, #8c6d53 0%, #684c35 100%);
             color: #ffffff;
             border: 1px solid #aa8769;
-            padding: 12px 24px;
-            font-size: 15px;
+            padding: 10px 20px;
+            font-size: 14px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
@@ -89,11 +95,6 @@
 
         .controls button:hover {
             background: linear-gradient(135deg, #a68568 0%, #8c6d53 100%);
-            transform: translateY(-2px);
-        }
-
-        .controls button:active {
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -133,15 +134,36 @@
 
     <script>
         $(document).ready(function() {
-            $('#flipbook').turn({
-                width: 900,
-                height: 600,
-                autoCenter: true,
-                duration: 1000,
-                gradients: true,
-                acceleration: true
-            });
+            function initCatalog() {
+                var windowWidth = $(window).width();
+                var bookWidth, bookHeight, displayMode;
 
+                // Проверяем, мобильное ли устройство
+                if (windowWidth < 768) {
+                    displayMode = 'single';
+                    bookWidth = Math.min(windowWidth - 20, 420);
+                    bookHeight = bookWidth * 1.414; // Пропорция А5
+                } else {
+                    displayMode = 'double';
+                    bookWidth = 900;
+                    bookHeight = 636;
+                }
+
+                // Инициализация Turn.js
+                $('#flipbook').turn({
+                    width: bookWidth,
+                    height: bookHeight,
+                    display: displayMode,
+                    autoCenter: true,
+                    duration: 800,
+                    gradients: true,
+                    acceleration: true
+                });
+            }
+
+            initCatalog();
+
+            // Навигация кнопками
             $('#prev').click(function() {
                 $('#flipbook').turn('previous');
             });
@@ -150,6 +172,7 @@
                 $('#flipbook').turn('next');
             });
 
+            // Навигация клавишами
             $(document).keydown(function(e) {
                 if (e.keyCode == 37) {
                     $('#flipbook').turn('previous');
